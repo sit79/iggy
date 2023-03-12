@@ -1,21 +1,38 @@
 {
-  "name": "playwright",
-  "version": "1.0.0",
-  "description": "Rewriting web scraper for Iggy Confidential.",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "SIT",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^5.2.0",
-    "dotenv": "^16.0.3",
-    "ora": "^6.1.2",
-    "playwright": "^1.31.2"
-  },
-  "devDependencies": {
-    "eslint-config-prettier": "^8.7.0"
-  }
+    "name": "playwright",
+    "version": "1.0.0",
+    "description": "A web scraper for Iggy Confidential.",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js --trace-warnings"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sit79/iggy.git"
+    },
+    "homepage": "https://github.com/sit79/iggy.git#readme",
+    "bugs": {
+        "url": "https://github.com/sit79/iggy.git/issues"
+    },
+    "author": "SIT",
+    "license": "MIT",
+    "keywords": [
+        "iggy pop",
+        "web scraping",
+        "playwright"
+    ],
+    "bin": {
+        "iggy": "./index.js"
+    },
+    "dependencies": {
+        "chalk": "^5.2.0",
+        "dotenv": "^16.0.3",
+        "ora": "^6.1.2",
+        "playwright": "^1.31.2"
+    },
+    "devDependencies": {
+        "eslint-config-prettier": "^8.7.0"
+    }
 }

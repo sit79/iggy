@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { chromium } from 'playwright';
 import { createDate, removeReadMore, oraInstance } from './helper.js';
 import env from './.config.cjs';
