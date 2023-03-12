@@ -14,5 +14,8 @@
     "dotenv": "^16.0.3",
     "ora": "^6.1.2",
     "playwright": "^1.31.2"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.7.0"
   }
 }
