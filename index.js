@@ -9,6 +9,7 @@ import fs from 'fs';
 
 const FILEPATH = env.FILEPATH;
 const URL = env.SCRAPE_URL;
+const BASE_URL = env.BASE_URL;
 
 const launchOptions = {
     headless: true,
@@ -22,15 +23,18 @@ const scrape = async () => {
     const pages = [];
 
     await page.goto(URL);
-    await page.waitForSelector('.sc-c-list__items');
+    // await page.waitForSelector('.sw-w-full ');
+    await page.waitForLoadState('domcontentloaded');
     spinner.succeed(chalk.green('browser launched'));
 
     spinner = oraInstance;
     spinner.start('collecting links');
-    let urls = await page.$$eval('li > article', (links) => {
-        links = links.map((el) => el.querySelector('a').href);
-        return links;
-    });
+    let urls = await page.$$eval(
+        'ul.sw-border-divider li a', // Selector
+        (links) => links.map(link => link.getAttribute('href'))
+    );
+
+    urls = urls.map(link => `${BASE_URL}${link}`);
 
     await page.close();
     spinner.succeed(chalk.green('links collected'));
@@ -46,7 +50,6 @@ const scrape = async () => {
     for (let page of pages) {
         savePage(page);
     }
-    // await page.waitForTimeout(10000); // wait for 10 seconds
     await browser.close();
 };
 
