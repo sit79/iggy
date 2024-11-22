@@ -29,19 +29,19 @@ const scrape = async () => {
 
     spinner = oraInstance;
     spinner.start('collecting links');
-    let urls = await page.$$eval(
+    const relativeUrls = await page.$$eval(
         'ul.sw-border-divider li a', // Selector
         (links) => links.map(link => link.getAttribute('href'))
     );
 
-    urls = urls.map(link => `${BASE_URL}${link}`);
+    const completeUrls = relativeUrls.map(link => `${BASE_URL}${link}`);
 
     await page.close();
     spinner.succeed(chalk.green('links collected'));
 
     spinner = oraInstance;
     spinner.start('scraping pages');
-    for (let link of urls) {
+    for (let link of completeUrls) {
         let dataObj = await scrapePage(browser, link);
         pages.push(dataObj);
     }
