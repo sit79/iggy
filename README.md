@@ -6,7 +6,7 @@ An overdue overhaul of this [prior version](https://github.com/sit79/iggy-confid
 
 ### Requirements
 
-Node 19.7
+Node 22.11
 
 ### Setup
 
